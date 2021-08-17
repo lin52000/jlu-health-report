@@ -47,7 +47,8 @@ def check(username, password, grade='YJS'):
             data = {'stepId': step_id, 'csrfToken': csrf_token}
             render = s.post(url=render_url, data=data, headers=headers)
             render_info = json.loads(render.content)['entities'][0]['data']
-
+            if(render_info['fieldXY3'] == ""): # 党史学习
+                render_info["fieldDJXXyc"] = "1"
             #打卡
             data = {
                 'actionId': 1,
